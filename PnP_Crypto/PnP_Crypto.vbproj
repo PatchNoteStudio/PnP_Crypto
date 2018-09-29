@@ -47,6 +47,15 @@
     <OptionInfer>On</OptionInfer>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="BitcoinUtilities">
+      <HintPath>..\..\KeyCore.NET\KeyCore.NET\KeyCore.NET\bin\Debug\BitcoinUtilities.dll</HintPath>
+    </Reference>
+    <Reference Include="BouncyCastle.Crypto">
+      <HintPath>..\..\KeyCore.NET\KeyCore.NET\KeyCore.NET\bin\Debug\BouncyCastle.Crypto.dll</HintPath>
+    </Reference>
+    <Reference Include="KeyCore">
+      <HintPath>..\..\KeyCore.NET\KeyCore.NET\KeyCore.NET\bin\Debug\KeyCore.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Deployment" />
