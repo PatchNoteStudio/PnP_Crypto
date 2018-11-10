@@ -23,7 +23,10 @@ Public Class Funktion
 
     Shared Function get_kontostand(pubkey As String) As String
         Dim kontostand As New WebClient
-        Dim ergebnis = JsonConvert.SerializeObject(kontostand.OpenRead("https://chain.so/api/v2/get_address_balance/BTC/" + pubkey))
-
+        kontostand.Encoding = Text.Encoding.UTF8
+        Dim antwort = kontostand.DownloadString("https://chain.so/api/v2/get_address_balance/BTC/" + pubkey)
+        Dim ergebnis = Newtonsoft.Json.Linq.JObject.Parse(antwort)
+        Dim network As String = ergebnis("data")("network")
+        Return ergebnis("data")("confirmed_balance")
     End Function
 End Class
