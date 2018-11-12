@@ -21,12 +21,15 @@ Public Class Funktion
 
     End Sub
 
-    Shared Function get_kontostand(pubkey As String) As String
+    Shared Function get_kontostand(pubkey As String) As String()
         Dim kontostand As New WebClient
         kontostand.Encoding = Text.Encoding.UTF8
         Dim antwort = kontostand.DownloadString("https://chain.so/api/v2/get_address_balance/BTC/" + pubkey)
         Dim ergebnis = Newtonsoft.Json.Linq.JObject.Parse(antwort)
         Dim network As String = ergebnis("data")("network")
-        Return ergebnis("data")("confirmed_balance")
+        Dim unconfirmed As String = ergebnis("data")("unconfirmed_balance")
+        Dim confirmed As String = ergebnis("data")("confirmed_balance")
+        Dim ergebnisse As String() = {network, unconfirmed, confirmed}
+        Return ergebnisse
     End Function
 End Class
